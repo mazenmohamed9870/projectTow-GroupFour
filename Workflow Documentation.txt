@@ -1,0 +1,128 @@
+Hospital Management System - Workflow Documentation
+
+Patient Management Workflow
+
+1. Patient Registration
+   - Function: registerPatient()
+   - Process: 
+     - Collect patient details (name, age, contact information)
+     - Generate unique patient ID
+     - Create new Patient object
+     - Add to patients vector
+   - Data Storage: Patient information stored in system
+
+2. Patient Admission
+   - Function: admitPatient()
+   - Process:
+     - Verify patient exists using patient ID
+     - Assign room type (General Ward, ICU, Private Room, Semi-Private)
+     - Update patient admission status
+     - Log admission in medical history
+   - Room Types: GENERAL_WARD, ICU, PRIVATE_ROOM, SEMI_PRIVATE
+
+3. Medical Test Management
+   - Functions: requestTest() and performTest()
+   - Process:
+     - Doctor requests test for patient
+     - Test added to patient's test queue
+     - Log test request in medical history
+     - When performed, test is removed from queue
+     - Result logged in medical history
+   - Test Handling: Uses queue data structure (FIFO)
+
+4. Patient Discharge
+   - Function: dischargePatient()
+   - Process:
+     - Verify patient is admitted
+     - Update admission status to false
+     - Log discharge in medical history
+     - Free up assigned room
+
+Doctor Management Workflow
+
+1. Doctor Registration
+   - Function: addDoctor()
+   - Process:
+     - Collect doctor details (name, department)
+     - Generate unique doctor ID
+     - Create new Doctor object
+     - Add to doctors vector
+   - Departments: CARDIOLOGY, NEUROLOGY, ORTHOPEDICS, PEDIATRICS, EMERGENCY, GENERAL
+
+2. Appointment Booking
+   - Function: bookAppointment()
+   - Process:
+     - Verify doctor and patient exist
+     - Add patient ID to doctor's appointment queue
+     - Log appointment in patient's medical history
+   - Scheduling: Uses queue data structure (FIFO)
+
+3. Patient Consultation
+   - Function: seePatient()
+   - Process:
+     - Doctor retrieves next patient from appointment queue
+     - Patient ID returned for consultation
+     - If queue empty, returns -1
+   - Queue Management: First-in, first-out processing
+
+Emergency Handling Workflow
+
+1. Emergency Case Registration
+   - Function: addEmergency()
+   - Process:
+     - Verify patient exists
+     - Add patient ID to emergency queue
+     - High priority processing
+   - Priority: Emergency cases handled before regular appointments
+
+2. Emergency Case Processing
+   - Function: handleEmergency()
+   - Process:
+     - Retrieve next patient from emergency queue
+     - Return patient ID for immediate treatment
+     - If queue empty, return -1
+
+Information Display Workflow
+
+1. Patient Information Display
+   - Function: displayPatientInfo()
+   - Process:
+     - Find patient by ID
+     - Display patient details (ID, name, admission status)
+     - Show medical history in chronological order
+
+2. Doctor Information Display
+   - Function: displayDoctorInfo()
+   - Process:
+     - Find doctor by ID
+     - Display doctor details (ID, name, department)
+
+Data Structures Used
+
+1. Vectors: Store patients and doctors
+2. Stacks: Store medical history (LIFO - Last In First Out)
+3. Queues: Manage tests and appointments (FIFO - First In First Out)
+4. Enumeration: Define departments and room types
+
+System Features
+
+- Patient registration and tracking
+- Doctor management and scheduling
+- Emergency case prioritization
+- Medical test management
+- Comprehensive medical history logging
+- Room allocation and management
+- Appointment scheduling system
+
+User Classes
+
+1. Administrators: Manage hospital operations and system maintenance
+2. Doctors: View appointments, access patient records, request tests
+3. Patients: Access their medical history and appointment information
+
+Error Handling
+
+- Invalid ID checks for patients and doctors
+- Empty queue handling for appointments and emergencies
+- Admission status verification before discharge
+- Duplicate registration prevention through unique IDs

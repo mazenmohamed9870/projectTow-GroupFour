@@ -1,0 +1,31 @@
+1. Mazen Mohamed
+Responsibilities:
+
+Hospital class implementation
+
+Main program coordination
+
+GitHub repository setup
+
+Overall project integration
+
+2. Malak Soliman
+Responsibilities:
+
+Patient class implementation
+
+Patient-related functionality
+
+3. Kareem
+Responsibilities:
+
+Enumerations and data structures
+
+Main function implementation
+
+4. Hanna
+Responsibilities:
+
+Doctor class implementation
+
+Doctor-related functionality
